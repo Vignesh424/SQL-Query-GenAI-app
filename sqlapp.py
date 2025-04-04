@@ -5,8 +5,8 @@ import streamlit as st
 from dotenv import load_dotenv
 import os
 import google.generativeai as genai
-# App Title
 
+# App Title
 title = st.title("CSV TO SQL CONVERTER")
 db_name = " "
 
@@ -78,16 +78,15 @@ if st.button("Check Database & Display Records"):
         except sqlite3.Error as e:
             st.error(f"SQLite error occurred: {e}")
 
-genai.configure(api_key='AIzaSyBZUa2gpJGrSbOBzG23dE8LNhPmY4lgdrg')
+genai.configure(api_key='AIzaSyBZUa2gpJGrSbOBzG23dE8LNhPmY4lgdrg') #Dont use this API key
 
 #Function to load model and get query and answer as response
-
 def google_gemini_response(question,prompt):
     model= genai.GenerativeModel('gemini-2.0-flash')
     response = model.generate_content([prompt[0],question])
     return response.text
 
-#Function to retrieve query from Pyspark database
+#Function to retrieve query from SQL database
 def read_sql_query(sql,db):
     try:
         conn = sqlite3.connect(db)
