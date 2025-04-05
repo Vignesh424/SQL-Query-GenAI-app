@@ -78,7 +78,7 @@ if st.button("Check Database & Display Records"):
         except sqlite3.Error as e:
             st.error(f"SQLite error occurred: {e}")
 
-genai.configure(api_key, os.getenv='GOOGLE_API_KEY') 
+genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
 
 #Function to load model and get query and answer as response
 def google_gemini_response(question,prompt):
